@@ -6,13 +6,13 @@ int main()
 {
     int n;
     int noOfSwaps = 0;
-    cout << "Enter the dimension of matrix : ";
+    cout << "Enter the dimension of matrix : " <<endl;
     cin >> n;
 
-    float arr[n][n];
-    float P[n][n]; // Permutation matrix
-    float L[n][n]; // Lower unit matrix
-    float U[n][n]; // Upper matrix
+    double arr[n][n];
+    double P[n][n]; // Permutation matrix
+    double L[n][n]; // Lower unit matrix
+    double U[n][n]; // Upper matrix
 
     int pie[n]; // for tracking row  swap number
 
@@ -28,7 +28,7 @@ int main()
         }
     }
 
-    cout << "Enter the elements of matrix ";
+    cout << "Enter the elements of matrix " << endl;
     for (int row = 0; row < n; row++) // inputting matrix
     {
         for (int column = 0; column < n; column++)
@@ -44,17 +44,17 @@ int main()
     int maxIndex = -1;
     for (int k = 0; k < n; k++)
     {
-        float max = 0;
+        double max = 0;
         for (int i = k; i < n; i++) // finding max in column
         {
-            if (abs(arr[i][k]) > max)
+            if (abs(arr[i][k]) >= max)
             {
                 max = abs(arr[i][k]);
                 maxIndex = i;
             }
         }
 
-        if (maxIndex == -1)
+        if (max == 0)
         {
             cout << "Singular Matrix ";
             return -1;
@@ -67,6 +67,7 @@ int main()
             {
                 swap(arr[k][i], arr[maxIndex][i]);
             }
+            if(k!=maxIndex)
             noOfSwaps++;
         }
 
@@ -107,7 +108,7 @@ int main()
     }
 
     cout << endl;
-    cout << " Transformed matrix is ";
+    cout << " Transformed matrix is " <<endl;
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++) // printing new Transformed matrix
@@ -118,7 +119,7 @@ int main()
     }
     cout << endl;
 
-    cout << " Upper triangular matrix is ";
+    cout << " Upper triangular matrix is " <<endl;
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++) // printing Upper triangular matrix
@@ -128,7 +129,7 @@ int main()
         cout << endl;
     }
     cout << endl;
-    cout << "Lower triangular matrix is ";
+    cout << "Lower triangular matrix is " << endl;
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++) // printing Lower triangular matrix
@@ -139,7 +140,7 @@ int main()
     }
     cout << endl;
 
-    cout << "Permutation matrix is ";
+    cout << "Permutation matrix is " << endl;
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++) // printing Permutation matrix
@@ -150,7 +151,15 @@ int main()
     }
 
     cout << endl;
-
-    // 2 0 2 0.6 3 3 4 -2 5 5 4 2 -1 -2 3.4 -1
-    // 2 3 1 5 6 13 5 19 2 19 10 23 4 10 11 31
+cout<<"determinent of matrix is : "<<endl;
+double det=1;
+for(int i=0;i<n;i++)
+{
+    det*=U[i][i];
+}
+if(noOfSwaps%2==1)
+{
+    det=det*(-1);
+}
+cout<<det<<endl;;
 }
