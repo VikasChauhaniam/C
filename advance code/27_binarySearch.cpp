@@ -26,7 +26,7 @@ int binarySearch(int arr[],int size, int key){
 
 int main(){
 
-    int arr[6] = {2,4,6,8,12,16};
+    int arr[3] = {1,3,4};
     int key;
 
     cout << "Enter Search element : ";
