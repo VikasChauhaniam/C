@@ -13,7 +13,7 @@ def read_integers_from_file(file_path):
 
     return list1, list2
 
-file_path = '/home/vikas/Desktop/CPP/IIT/Algo/Example.txt'  # Replace with the path to your .txt file
+file_path = '/home/vikas/Desktop/CPP/IIT/Algo/Algo3Assignment/BinHeap_randm/Binary_Heap.txt'  # Replace with the path to your .txt file
 list1, list2 = read_integers_from_file(file_path)
 
 
@@ -23,7 +23,7 @@ print("List 2:", list2)
 
 
 
-def plot_lists(list1, list2:
+def plot_lists(list1, list2):
     # Create the plot
     plt.plot(list1, list2, marker='o', linestyle='-', color='b', label='AVL')
    # plt.plot(list1, list3, marker='x', linestyle='--', color='r', label='Splay')
@@ -31,8 +31,8 @@ def plot_lists(list1, list2:
     
     # Add labels and title
     plt.xlabel('time stamp')
-    plt.ylabel('No. of Operations)
-    plt.title('Comparison of AVL  and Splay tree and Red black tree')
+    plt.ylabel('No. of Operations')
+    plt.title('binary_heap')
     
     # Add a legend
     plt.legend()

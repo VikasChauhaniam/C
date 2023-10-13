@@ -25,29 +25,8 @@ int allocationMatrix[numProcesses][numResources] = {
 };
 
 // Define the available resources
-int availableResources[numResources] = {1,1,1,1};
+int availableResources[numResources] = {1,0, 0,0};
 
-
-
-
-
-
-//---------------------------------------------------------------------------------------------
-// int maxMatrix[numProcesses][numResources] = {
-//     {7, 5, 3},
-//     {3, 2, 2},
-//     {9, 0, 2}
-// };
-
-// // Define the currently allocated resources for each process
-// int allocationMatrix[numProcesses][numResources] = {
-//     {0, 1, 0},
-//     {2, 0, 0},
-//     {3, 0, 2}
-// };
-
-// // Define the available resources
-// int availableResources[numResources] = {3, 3, 2};
 
 bool isSafe(int process, vector<bool>& finish) {
     // Check if the process can finish safely

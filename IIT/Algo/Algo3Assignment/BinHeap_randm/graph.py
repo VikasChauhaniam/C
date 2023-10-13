@@ -13,7 +13,7 @@ def read_integers_from_file(file_path):
 
     return list1, list2
 
-file_path = '/home/vikas/Desktop/CPP/IIT/Algo/Example.txt'  # Replace with the path to your .txt file
+file_path = '/home/vikas/Desktop/CPP/IIT/Algo/Algo3Assignment/BinHeap_randm and created text to create graph'  # Replace with the path to your .txt file
 list1, list2 = read_integers_from_file(file_path)
 
 

@@ -1,0 +1,191 @@
+int main()
+{
+    struct avl_node *avl_root = new struct avl_node() ;
+    avl_root = NULL ;
+    splay_root = NULL ;
+    Red_blackTree bst;
+
+    int sequence_size[10] = {0} ;
+    int avl_rotation[10] = {0} ;
+    int splay_rotaion[10] = {0} ;
+    int red_black_rot[10] = {0} ;
+    
+    srand(time(0));
+    int random_int = (rand() % 10)+1;
+
+    for(int k = 0 ; k < 10 ; k++)
+    {
+        sequence_size[k] = random_int ;
+
+        cout << "random int is : " << random_int<<endl;
+
+        int* operationArray = new int[random_int]; 
+
+        srand(time(0));
+        // Fill the array with random values of 0, 1, and 2
+        for (int i = 0; i < random_int; ++i) 
+        {
+            operationArray[i] = rand() % 3; // Generate a random value between 0 and 2
+        }
+
+        int count0 = 0, count1 = 0, count2 = 0;
+
+        for (int i = 0; i < random_int; ++i) 
+        {
+            cout << operationArray[i] << " ";
+            if (operationArray[i]  == 0) 
+            {
+                count0++;
+            } else if (operationArray[i]  == 1) 
+            {
+                count1++;
+            } else if (operationArray[i]  == 2) 
+            {
+                count2++;
+            }
+        }  
+
+        int* searchArray = new int[count0];
+        int* insertArray = new int[count1];
+        int* deleteArray = new int[count2]; 
+
+        for (int i = 0; i < count0; ++i) 
+        {
+            searchArray[i] = rand() % 100; // Generate a random value between 0 and 99
+        }
+
+        cout << "--------------------------SearchArray-----------------"<<endl;
+        for (int i = 0; i < count0; ++i) 
+        {
+            cout << searchArray[i] << " ";  
+        }
+
+        for (int i = 0; i < count1; ++i) 
+        {
+            insertArray[i] = rand() % 100; // Generate a random value between 0 and 99
+        }
+        cout<<endl;
+
+        cout << "--------------------------InsertArray-----------------"<<endl;
+        for (int i = 0; i < count1; ++i) 
+        {
+            cout << insertArray[i] << " ";  
+        }
+
+        for (int i = 0; i < count2; ++i) 
+        {
+            deleteArray[i] = rand() % 100; // Generate a random value between 0 and 99
+        }
+        cout<<endl;
+
+        cout << "--------------------------DeleteArray-----------------"<<endl;
+        for (int i = 0; i < count2; ++i) 
+        {
+            cout << deleteArray[i] << " ";  
+        }
+        cout<<endl;
+
+
+
+//---------------------------------------------------------------HERE WE CAN ADD OUR CALLING FXNS-------------------------
+        int s = 0 , in = 0 , d = 0  ;
+        for (int i = 0; i < random_int; ++i) 
+        {
+            if (operationArray[i]  == 0) 
+            {
+                //SearchFUNCTION(searchArray[i])
+                //for AVL tree
+                if(avl_search(avl_root , searchArray[s])) 
+                    cout << "\nElement " << searchArray[s] << " is present in avl tree " << endl;
+                else
+                    cout << "\nElement " << searchArray[s] << " is not present in avl tree " << endl;
+                //for SPLAY tree
+                if(splay_search(searchArray[s])) 
+                    cout << "\nElement " << searchArray[s] << " is present in splay tree " << endl;
+                else
+                    cout << "\nElement " << searchArray[s] << " is not present in splay tree " << endl;
+                //for red black
+                if(bst.searchTree(searchArray[s]))
+                    cout << "\nElement " << searchArray[s] << " is present in RED_BLACK tree " << endl;
+                else
+                    cout << "\nElement " << searchArray[s] << " is not present in RED_BLACK tree " << endl;
+                s++ ;
+            } 
+            else if (operationArray[i]  == 1) 
+            {
+                //InsertFUNCTION(insertArray[i])
+                //for AVL tree
+                avl_root = avl_insert(avl_root , insertArray[in]) ;
+                //for SPLAY tree
+                splay_root = splay_insert(splay_root , insertArray[in]) ;
+                //for red black
+                bst.insert(insertArray[in]) ;
+                in++ ;
+            } 
+            else if (operationArray[i]  == 2) 
+            {
+                //DeletionFUNCTION(deletionArray[i])
+                //for AVL tree
+                avl_root = avl_delete_node(avl_root , deleteArray[d]) ;
+                //for SPLAY tree
+                splay_root = splay_delete_node(deleteArray[d]) ;
+                //for red black
+                bst.deleteNode(deleteArray[d]) ;
+                d++ ;
+            }
+        }
+
+        // Don't forget to delete the dynamically allocated array
+        delete[] operationArray;
+
+        avl_print_tree(avl_root) ;
+        splay_print_tree(splay_root) ;
+        bst.printTree();
+        cout << "\nNo of rotations  required for insert : " << count_insertion << endl ;
+        cout << "\nNo of rotations  required for delete : " << count_deletion << endl << "\n\n" ;
+        cout << "\nNo of zig rotations : " << zig << endl ;
+        cout << "\nNo of zig_zig rotations : " << zig_zig << endl ;
+        cout << "\nNo of zig_zag rotations : " << zig_zag << endl ;
+        cout << "\nNo of rotations in red_black : " << red_black_rotation << endl ;
+
+        int total_avl_rotation = count_insertion + count_deletion ;
+        int total_splay_rotation = zig + zig_zig + zig_zag ;
+
+        cout << "\nTotal avl rotations : " << total_avl_rotation << endl ;
+        avl_rotation[k] = total_avl_rotation ;
+        cout << "\nTotal splay rotations : " << total_splay_rotation << endl ;
+        splay_rotaion[k] = total_splay_rotation ;
+        cout << "\nTotal no of rotations in red_black : " << red_black_rotation << endl ;
+        red_black_rot[k] = red_black_rotation ; 
+
+        random_int += 100 ;
+
+    } 
+    ofstream myfile ("example2.txt");
+    if (myfile.is_open())
+    {
+        for(int count = 0; count < 10; count ++)
+        {
+            myfile << sequence_size[count] << " " ;
+        }
+        myfile << "\n" ;
+        for(int count = 0; count < 10; count ++)
+        {
+            myfile << avl_rotation[count] << " " ;
+        }
+        myfile << "\n" ;
+        for(int count = 0; count < 10; count ++)
+        {
+            myfile << splay_rotaion[count] << " " ;
+        }
+        myfile << "\n" ;
+        for(int count = 0; count < 10; count ++)
+        {
+            myfile << red_black_rot[count] << " " ;
+        }
+        myfile << "\n" ;
+
+        myfile.close();
+    }
+    else cout << "Unable to open file";
+}
